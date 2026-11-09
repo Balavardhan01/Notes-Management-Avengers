@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Notes Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a clean student project feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1>📝 Personal Notes Management</h1>
+                <p class="subtitle">Hackathon Edition • Spring Boot + H2 + Vanilla JS</p>
+            </div>
+        </header>
+
+        <!-- Note Input Form Card -->
+        <section class="card form-card">
+            <h2 id="form-heading">➕ Create New Note</h2>
+            <form id="note-form">
+                <input type="hidden" id="note-id" value="">
+
+                <div class="form-row">
+                    <div class="form-group flex-2">
+                        <label for="note-title">Title *</label>
+                        <input type="text" id="note-title" placeholder="Note title (e.g., Hackathon Pitch, CS Lab 4)" required>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="note-category">Category</label>
+                        <input type="text" id="note-category" list="category-datalist" placeholder="e.g. College, Ideas, Personal">
+                        <datalist id="category-datalist">
+                            <option value="College">
+                            <option value="Hackathon">
+                            <option value="Personal">
+                            <option value="Ideas">
+                            <option value="Work">
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="note-content">Content *</label>
+                    <textarea id="note-content" rows="4" placeholder="Write your thoughts, checklist, or code snippets here..." required></textarea>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="note-important">
+                        <span>⭐ Mark as <strong>Important</strong></span>
+                    </label>
+
+                    <div class="form-buttons">
+                        <button type="button" id="cancel-edit-btn" class="btn btn-secondary" style="display: none;">Cancel</button>
+                        <button type="submit" id="save-note-btn" class="btn btn-primary">Save Note</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Controls: Tabs, Search, and Category Filter -->
+        <section class="controls-section">
+            <div class="tabs">
+                <button class="tab-btn active" id="tab-active">
+                    📋 Active Notes <span class="badge" id="active-count">0</span>
+                </button>
+                <button class="tab-btn" id="tab-archived">
+                    📦 Archived Notes <span class="badge" id="archived-count">0</span>
+                </button>
+            </div>
+
+            <div class="filters">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="🔍 Search by title...">
+                </div>
+
+                <div class="category-filter">
+                    <select id="category-filter-select">
+                        <option value="ALL">All Categories</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notes Grid Display -->
+        <main>
+            <div id="notes-container" class="notes-grid">
+                <!-- Dynamically loaded via app.js -->
+            </div>
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <p>No notes found matching your criteria.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vanilla JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
