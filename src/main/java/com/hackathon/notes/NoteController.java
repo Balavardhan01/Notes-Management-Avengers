@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/notes")
-@CrossOrigin(origins = "*") // Allow frontend to call APIs without CORS issues
+@CrossOrigin(origins = "https://notes-management-avengers.vercel.app/") // Allow frontend to call APIs without CORS issues
 public class NoteController {
 
     @Autowired
